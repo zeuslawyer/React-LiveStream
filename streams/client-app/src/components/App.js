@@ -7,17 +7,23 @@ import StreamDelete from "./screens/StreamDelete";
 import StreamEdit from "./screens/StreamEdit";
 import StreamShow from "./screens/StreamShow";
 
+import Header from "./Header";
+
 class App extends Component {
+  
   render() {
     return (
-      <div>
+      <div className="ui container">
         <BrowserRouter>
           <div>
+            <Header />
+
             <Route path="/" exact component={StreamsList} />
             <Route path="/streams/new" exact component={StreamCreate} />
             <Route path="/streams/edit" exact component={StreamEdit} />
             <Route path="/streams/delete" exact component={StreamDelete} />
             <Route path="/streams/show" exact component={StreamShow} />
+
           </div>
         </BrowserRouter>
       </div>
