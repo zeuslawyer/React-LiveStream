@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route} from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 
-function HomePage() {
-  return <div>This is the Home Page!</div>;
-}
-function Blog() {
-  return <div>This is the Blog Page!</div>;
-}
+import StreamsList from "./screens/StreamsList";
+import StreamCreate from "./screens/StreamCreate";
+import StreamDelete from "./screens/StreamDelete";
+import StreamEdit from "./screens/StreamEdit";
+import StreamShow from "./screens/StreamShow";
 
 class App extends Component {
   render() {
@@ -14,8 +13,11 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <div>
-          <Route path="/" exact component={HomePage} />
-            <Route path="/blog" component={Blog} />
+            <Route path="/" exact component={StreamsList} />
+            <Route path="/streams/new" exact component={StreamCreate} />
+            <Route path="/streams/edit" exact component={StreamEdit} />
+            <Route path="/streams/delete" exact component={StreamDelete} />
+            <Route path="/streams/show" exact component={StreamShow} />
           </div>
         </BrowserRouter>
       </div>
