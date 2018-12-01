@@ -26,26 +26,35 @@ class GoogleAuth extends Component {
   onAuthChange = () => {
     this.setState({ isSignedIn: this.auth.isSignedIn.get() });
   };
+
   renderAuthButton() {
     //initial load
     if (this.state.isSignedIn === null) return null;
 
     if (this.state.isSignedIn) {
       return (
-        <button className="ui red google button">
-        <i className="google icon"/>
-        SIGN OUT
-      </button>
+        <button className="ui red google button" onClick={()=>this.auth.signOut()}>
+          <i className="google icon" />
+          SIGN OUT
+        </button>
       );
     }
-    //else if false
+    //else if signed in is false
     return (
-      <button className="ui red google button">
-        <i className="google icon"/>
+      <button className="ui blue google button" onClick={()=>this.auth.signIn()}>
+        <i className="google icon" />
         SIGN IN
       </button>
     );
   }
+
+  // onButtonClick = () => {
+  //   if (this.auth.isSignedIn.get()) {
+  //     this.auth.signOut();
+  //   } else if (!this.auth.isSignedIn.get()) {
+  //     this.auth.signIn();
+  //   }
+  // };
 
   render() {
     return <div>{this.renderAuthButton()}</div>;
