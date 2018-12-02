@@ -18,10 +18,20 @@ class StreamCreate extends Component {
     );
   };
 
+  //redux form's handleSubmit prop  invokes our form submit handler,
+  //with the field name/value obj as argument
+  onFormSubmit = formValues => {
+    console.log(formValues);
+  };
+
   render() {
-    // console.log(this.props);  // all the many things that redux forms adds to this component
+    // console.log(this.props); // all the many things that redux forms adds to this component
     return (
-      <form className=" ui form ">
+      <form
+        className="ui form"
+        //pass a prop of onSubmit, which refers to redux form's handleSubmit prop -> it calls prevent default
+        onSubmit={this.props.handleSubmit(this.onFormSubmit)}
+      >
         <Field
           name="title"
           component={this.renderInputField}
@@ -32,6 +42,7 @@ class StreamCreate extends Component {
           component={this.renderInputField}
           label="...and a description"
         />
+        <button type="submit">SUBMIT</button>
       </form>
     );
   }
