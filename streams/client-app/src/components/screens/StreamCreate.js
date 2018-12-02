@@ -4,13 +4,12 @@ import { Field, reduxForm } from "redux-form";
 class StreamCreate extends Component {
   //form field components -> functional components
   renderInputField = formProps => {
-    console.log(formProps);
+    // console.log(formProps)
+    // pass the formProps.input object as an object of props to input.
+    //uses the same k/v pairing
     return (
       <div>
-        <input
-          value={formProps.input.value}
-          onChange={formProps.input.onChange}
-        />
+        <input {...formProps.input} />
       </div>
     );
   };
