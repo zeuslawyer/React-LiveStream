@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { reducer as reduxFormReducer } from "redux-form";
 
 /*
 ALWAYS ALWAYS
@@ -24,5 +25,6 @@ const authReducer = (currentState = INITIAL_STATE, action) => {
 };
 
 export default combineReducers({
-  authStatus: authReducer
+  authStatus: authReducer,
+  form: reduxFormReducer
 });
