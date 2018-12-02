@@ -27,12 +27,12 @@ class GoogleAuth extends Component {
   }
 
   //listener - gapi passes auth status as a (boolean) argument
+  //listener - then triggers actions/props to update app store/state
   onAuthChange = isSignedIn => {
     // console.log("listener callback triggered....");
     if (isSignedIn) {
       //if gapi confirms userId is signed in...call signIn actionc creator to update app level state
       let userId = this.auth.currentUser.get().getId();
-      console.log(userId);
       this.props.signIn(userId);
     } else {
       this.props.signOut();
