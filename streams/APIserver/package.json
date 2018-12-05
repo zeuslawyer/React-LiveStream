@@ -1,0 +1,15 @@
+{
+    "name": "apiserver",
+    "version": "1.0.0",
+    "description": "\"JSON API server\"",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "json-server -p 3001 -w db.json"
+    },
+    "author": "Zubin | zeuscoder",
+    "license": "ISC",
+    "dependencies": {
+        "json-server": "^0.14.0"
+    }
+}
