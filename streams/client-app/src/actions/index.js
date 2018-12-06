@@ -28,12 +28,13 @@ export const signOut = () => {
 
 // ====== RESTful ACTION CREATORS  ==============
 
-//redux thunk, as this is async, and it returns an async function, not an object
+//redux thunk, as this is async, and it returns an async function (with 2 args), not an object
 export const streamCreateAction = formData => {
-  return async dispatch => {
+  return async (dispatch, getState) => {
     // console.log("action hit!");
+    formData["userId"] = getState().authStatus.userId
     const response = await axios.post("/streams", formData);
-    console.log(response);
+    console.log(response.data);
     dispatch({
       type: actionKeys.STREAM_CREATE,
       payload: response.data

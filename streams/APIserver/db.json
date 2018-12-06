@@ -14,6 +14,30 @@
       "title": "ok lets do this",
       "description": "am i getting the hang of this or what?",
       "id": 3
+    },
+    {
+      "title": "Setting a user id",
+      "description": "this sets a user ID pulled from the app store/state!",
+      "userId": "111517655550946432059",
+      "id": 4
+    },
+    {
+      "title": "test UID again",
+      "description": "testing!",
+      "userId": "111517655550946432059",
+      "id": 5
+    },
+    {
+      "title": "test UID again- AFTER signout!",
+      "description": "hoo boy",
+      "userId": "111517655550946432059",
+      "id": 6
+    },
+    {
+      "title": "test UID again- but am signed in....",
+      "description": "hoo boy",
+      "userId": null,
+      "id": 7
     }
   ]
 }
