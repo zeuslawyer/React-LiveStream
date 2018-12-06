@@ -44,7 +44,7 @@ export const streamCreateAction = formData => {
 export const getAllStreamsAction = () => {
   return async dispatch => {
     const response = await axios.get("/streams");
-    console.log(response);
+    // console.log(response.data);
     dispatch({
       type: actionKeys.FETCH_STREAMS,
       payload: response.data

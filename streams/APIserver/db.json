@@ -1,9 +1,19 @@
 {
   "streams": [
     {
-      "title": "My First Stream",
+      "title": "My second! Stream",
       "description": "and what a fine stream it is!",
       "id": 1
+    },
+    {
+      "title": "whoa baby",
+      "description": "this is fun but GOD it takes long",
+      "id": 2
+    },
+    {
+      "title": "ok lets do this",
+      "description": "am i getting the hang of this or what?",
+      "id": 3
     }
   ]
 }

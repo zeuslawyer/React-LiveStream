@@ -1,9 +1,36 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { getAllStreamsAction } from "../../actions/index";
 
 class StreamShow extends Component {
+  renderStreams = () => {
+    return <div>Streams...</div>;
+  };
+
+  componentDidMount = () => {
+    this.props.getAllStreamsAction();
+  };
+
   render() {
-    return <div>Stream Show Page</div>;
+    // console.log(this.props.streams);
+    if (this.props.streams[1]) return this.renderStreams();
+
+    return (
+      <div>
+        <p>No Streams</p>
+        {/* <button onClick={this.showStreams}>SHOW STREAMS</button> */}
+      </div>
+    );
   }
 }
 
-export default StreamShow;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    streams: state.streams
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { getAllStreamsAction }
+)(StreamShow);
