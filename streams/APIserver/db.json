@@ -4,6 +4,11 @@
       "title": "my first streatm",
       "description": "what a great stream!",
       "id": 1
+    },
+    {
+      "title": "my second post",
+      "description": "refactoring thunk!",
+      "id": 2
     }
   ]
 }

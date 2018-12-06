@@ -15,10 +15,10 @@ export const signOut = () => {
   };
 };
 
-//redux thunk as this is async
-export const streamCreateAction = formData => async dispatch => {
-  console.log("action hit!");
-  axios.post("/streams", formData);
-
-  // HTTP POST so no returned object with action
+//redux thunk, as this is async, and it returns an async function, not an object
+export const streamCreateAction = formData => {
+  return async dispatch => {
+    console.log("action hit!");
+    axios.post("/streams", formData);
+  };
 };
