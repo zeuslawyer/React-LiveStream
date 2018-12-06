@@ -37,15 +37,9 @@ export class StreamsList extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  let streams = [];
-  for (let key in state.streams) {
-    streams.push(state.streams[key]);
-  }
-  return {
-    streams
-    // streams: state.streams
-  };
+ return {streams: Object.values(state.streams)}
 };
+
 
 export default connect(
   mapStateToProps,
