@@ -8,7 +8,7 @@ export const actionKeys = {
   FETCH_STREAMS: "FETCH_STREAMS",
   EDIT_A_STREAM: "EDIT_STREAM",
   EDIT_STREAMS: "EDIT_STREAMS",
-  DELETE_STREAM: "DELETE_STREAMS"
+  DELETE_STREAM: "DELETE_STREAM"
 };
 
 export const signIn = userId => {
