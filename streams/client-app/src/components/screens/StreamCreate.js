@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { streamCreateAction } from "../../actions/index";
 
 class StreamCreate extends Component {
   // the form input prop always receives a form props object
@@ -40,6 +42,7 @@ class StreamCreate extends Component {
   onFormSubmit = formData => {
     //this handler only runs if there are NO validation errors returned in the meta property in formProps
     console.log("form submitted with the following fields: ", formData);
+    this.props.streamCreateAction(formData);
   };
 
   render() {
@@ -82,7 +85,12 @@ const validateForm = formData => {
   return errors;
 };
 
-export default reduxForm({
+const theForm = reduxForm({
   form: "streamCreate", //form name- typically give it the file name
   validate: validateForm // key must always be "validate". This now adds the meta prop to form input element
 })(StreamCreate);
+
+export default connect(
+  null,
+  { streamCreateAction}
+)(theForm);
