@@ -56,7 +56,7 @@ class StreamCreate extends Component {
         <Field
           name="title"
           //render the form input within a Field Component  ->  pass a rendering function OR imported functional components
-          //this is passed a form props object
+          //this fn is passed a form props object, which contains all the props from here + input values
           component={this.renderInputField}
           label="TITLE"
         />
@@ -92,5 +92,5 @@ const theForm = reduxForm({
 
 export default connect(
   null,
-  { streamCreateAction}
+  { streamCreateAction }
 )(theForm);

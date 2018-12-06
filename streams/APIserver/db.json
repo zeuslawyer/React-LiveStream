@@ -1,14 +1,9 @@
 {
   "streams": [
     {
-      "title": "my first streatm",
-      "description": "what a great stream!",
+      "title": "My First Stream",
+      "description": "and what a fine stream it is!",
       "id": 1
-    },
-    {
-      "title": "my second post",
-      "description": "refactoring thunk!",
-      "id": 2
     }
   ]
 }
