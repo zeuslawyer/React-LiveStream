@@ -5,7 +5,19 @@ import { getAllStreamsAction } from "../../actions/index";
 
 export class StreamsList extends Component {
   renderStreams = () => {
-    return <div>List of Streams...</div>;
+    return this.props.streams.map(stream => {
+      return (
+        <p>
+          <div>
+            <b>Title:</b> {stream.title}
+          </div>
+          <div>
+            <b>Description:</b> {stream.description}
+          </div>
+        </p>
+      );
+    });
+    // return <div>List of Streams...</div>;
   };
 
   componentDidMount = () => {
@@ -14,21 +26,28 @@ export class StreamsList extends Component {
 
   render() {
     // console.log(this.props.streams);
-    if (this.props.streams[1]) return this.renderStreams();
+    if (this.props.streams[0]) return <div>{this.renderStreams()} </div>;
 
     return (
       <div>
         <p>No Streams</p>
-        {/* <button onClick={this.showStreams}>SHOW STREAMS</button> */}
       </div>
     );
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
+  let streams = [];
+  for (let key in state.streams) {
+    streams.push(state.streams[key]);
+  }
   return {
-    streams: state.streams
+    streams
+    // streams: state.streams
   };
 };
 
-export default connect(mapStateToProps, {getAllStreamsAction} )(StreamsList);
+export default connect(
+  mapStateToProps,
+  { getAllStreamsAction }
+)(StreamsList);
