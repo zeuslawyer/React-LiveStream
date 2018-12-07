@@ -1,23 +1,23 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-
+import { Link } from "react-router-dom";
 import { getAllStreamsAction } from "../../actions/index";
 
 export class StreamsList extends Component {
-  renderAdminButtons = (stream) => {
+  renderAdminButtons = stream => {
     let cond1 = stream.userId === this.props.currentUserId;
     let cond2 = !!this.props.currentUserId;
-
     if (cond1 && cond2) {
       return (
         <div
+          className="right floated content"
           style={{
             display:
               this.props.currentUserId === stream.userId ? "block" : "none"
           }}
         >
-          <button className="ui green button">EDIT</button>
-          <button className="ui red button">DELETE</button>
+          <button className="ui yellow tiny button">EDIT</button>
+          <button className="ui red tiny button">DELETE</button>
         </div>
       );
     }
@@ -27,15 +27,26 @@ export class StreamsList extends Component {
     return this.props.streams.map(stream => {
       return (
         <div className="item" key={stream.id}>
+          {this.renderAdminButtons(stream)}
           <i className="large middle aligned camera icon" />
           <div className="content">
             {stream.title}
             <div className="description"> {stream.description} </div>
           </div>
-          {this.renderAdminButtons(stream)}
+          {/* {this.renderAdminButtons(stream)} */}
         </div>
       );
     });
+  };
+
+  renderCreateStreamButton = params => {
+    if (this.props.currentUserId && this.props.isSignedIn)
+    return (
+      <div style={{textAlign:'right'}}>
+        <Link to="/streams/new" className="ui purple button">  Create Stream
+        </Link>
+      </div>
+    );
   };
 
   componentDidMount = () => {
@@ -48,7 +59,8 @@ export class StreamsList extends Component {
       return (
         <div>
           <h2>STREAMS!</h2>
-          <div className="ui celled list">{this.renderStreams()}</div>{" "}
+          <div className="ui celled list">{this.renderStreams()}</div>
+          {this.renderCreateStreamButton()}
         </div>
       );
 
@@ -63,7 +75,8 @@ export class StreamsList extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     streams: Object.values(state.streams),
-    currentUserId: state.authStatus.userId
+    currentUserId: state.authStatus.userId,
+    isSignedIn : state.authStatus.isSignedIn
   };
 };
 

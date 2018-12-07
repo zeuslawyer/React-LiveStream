@@ -65,7 +65,7 @@ class StreamCreate extends Component {
           component={this.renderInputField}
           label="DESCRIPTION"
         />
-        <button type="submit">SUBMIT</button>
+        <button className="ui button green" type="submit">SUBMIT</button>
       </form>
     );
   }
