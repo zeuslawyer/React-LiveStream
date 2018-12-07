@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Router, Route } from "react-router-dom";
 import "redux";
-
-import StreamsList from "./screens/StreamsList";
-import StreamCreate from "./screens/StreamCreate";
-import StreamDelete from "./screens/StreamDelete";
-import StreamEdit from "./screens/StreamEdit";
-import StreamShow from "./screens/StreamShow";
 import browserHistory from "../history";
+
+import StreamsList from "./streamViews/StreamsList";
+import StreamCreate from "./streamViews/StreamCreate";
+import StreamDelete from "./streamViews/StreamDelete";
+import StreamEdit from "./streamViews/StreamEdit";
+import StreamShow from "./streamViews/StreamShow";
 
 import Header from "./Header";
 
