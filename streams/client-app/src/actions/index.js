@@ -1,4 +1,5 @@
 import axios from "../API/axios";
+import browserHistory from '../history';
 
 export const actionKeys = {
   SIGN_IN: "SIGN_IN",
@@ -34,11 +35,13 @@ export const streamCreateAction = formData => {
     // console.log("action hit!");
     formData["userId"] = getState().authStatus.userId
     const response = await axios.post("/streams", formData);
-    console.log(response.data);
+    // console.log(response.data);
     dispatch({
       type: actionKeys.STREAM_CREATE,
       payload: response.data
     });
+
+    browserHistory.push('/')
   };
 };
 

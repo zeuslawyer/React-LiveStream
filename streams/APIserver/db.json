@@ -12,7 +12,7 @@
     },
     {
       "title": "ok lets do this",
-      "description": "am i getting the hang of this or what?",
+      "description": "No user id prop on this stream object!",
       "id": 3
     },
     {
@@ -44,6 +44,18 @@
       "description": "OOOO so fancy :-D",
       "userId": "111517655550946432059",
       "id": 8
+    },
+    {
+      "title": "testing console XHR display",
+      "description": "does it show the HTTP method?",
+      "userId": "111517655550946432059",
+      "id": 9
+    },
+    {
+      "title": "Testing Redirects",
+      "description": "Let's see if this works!",
+      "userId": "111517655550946432059",
+      "id": 10
     }
   ]
 }

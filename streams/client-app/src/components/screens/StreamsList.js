@@ -16,8 +16,15 @@ export class StreamsList extends Component {
               this.props.currentUserId === stream.userId ? "block" : "none"
           }}
         >
-          <button className="ui yellow tiny button">EDIT</button>
-          <button className="ui red tiny button">DELETE</button>
+          <Link
+            className="ui yellow tiny button"
+            to={`/streams/edit/${stream.id}`}
+          >
+            EDIT
+          </Link>
+          <Link className="ui red tiny button" to="streams/delete">
+            DELETE
+          </Link>
         </div>
       );
     }
@@ -41,12 +48,14 @@ export class StreamsList extends Component {
 
   renderCreateStreamButton = params => {
     if (this.props.currentUserId && this.props.isSignedIn)
-    return (
-      <div style={{textAlign:'right'}}>
-        <Link to="/streams/new" className="ui purple button">  Create Stream
-        </Link>
-      </div>
-    );
+      return (
+        <div style={{ textAlign: "right" }}>
+          <Link to="/streams/new" className="ui purple button">
+            {" "}
+            Create Stream
+          </Link>
+        </div>
+      );
   };
 
   componentDidMount = () => {
@@ -76,7 +85,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     streams: Object.values(state.streams),
     currentUserId: state.authStatus.userId,
-    isSignedIn : state.authStatus.isSignedIn
+    isSignedIn: state.authStatus.isSignedIn
   };
 };
 
