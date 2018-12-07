@@ -4,6 +4,25 @@ import { connect } from "react-redux";
 import { getAllStreamsAction } from "../../actions/index";
 
 export class StreamsList extends Component {
+  renderAdminButtons = (stream) => {
+    let cond1 = stream.userId === this.props.currentUserId;
+    let cond2 = !!this.props.currentUserId;
+
+    if (cond1 && cond2) {
+      return (
+        <div
+          style={{
+            display:
+              this.props.currentUserId === stream.userId ? "block" : "none"
+          }}
+        >
+          <button className="ui green button">EDIT</button>
+          <button className="ui red button">DELETE</button>
+        </div>
+      );
+    }
+  };
+
   renderStreams = () => {
     return this.props.streams.map(stream => {
       return (
@@ -13,6 +32,7 @@ export class StreamsList extends Component {
             {stream.title}
             <div className="description"> {stream.description} </div>
           </div>
+          {this.renderAdminButtons(stream)}
         </div>
       );
     });
@@ -41,7 +61,10 @@ export class StreamsList extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { streams: Object.values(state.streams) };
+  return {
+    streams: Object.values(state.streams),
+    currentUserId: state.authStatus.userId
+  };
 };
 
 export default connect(
