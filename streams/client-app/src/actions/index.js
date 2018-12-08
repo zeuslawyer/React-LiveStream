@@ -1,5 +1,5 @@
 import axios from "../API/axios";
-import browserHistory from '../history';
+import browserHistory from "../history";
 
 export const actionKeys = {
   SIGN_IN: "SIGN_IN",
@@ -33,7 +33,7 @@ export const signOut = () => {
 export const streamCreateAction = formData => {
   return async (dispatch, getState) => {
     // console.log("action hit!");
-    formData["userId"] = getState().authStatus.userId
+    formData["userId"] = getState().authStatus.userId;
     const response = await axios.post("/streams", formData);
     // console.log(response.data);
     dispatch({
@@ -41,7 +41,7 @@ export const streamCreateAction = formData => {
       payload: response.data
     });
 
-    browserHistory.push('/')
+    browserHistory.push("/");
   };
 };
 
@@ -69,12 +69,13 @@ export const getSingleStreamAction = id => {
 
 export const editStreamAction = (id, formData) => {
   return async dispatch => {
-    const response = await axios.put(`/streams/${id}`, formData);
+    const response = await axios.patch(`/streams/${id}`, formData);
     console.log(response);
     dispatch({
       type: actionKeys.EDIT_A_STREAM,
       payload: response.data
     });
+    browserHistory.push("/");
   };
 };
 

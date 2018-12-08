@@ -1,20 +1,22 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getSingleStreamAction, editStreamAction, getAllStreamsAction } from "../../actions/index";
+import { getSingleStreamAction, editStreamAction } from "../../actions/index";
 import StreamForms from "./StreamForms";
 
 class StreamEdit extends Component {
   render() {
     // console.log(this.props);
-
     if (!this.props.stream) return <div> / ...fetching... /</div>;
-
+    
+    const title = this.props.stream.title
+    const description = this.props.stream.description
     return (
       <div>
         <h3>Edit this Stream</h3>
         <StreamForms
-          initialValues={this.props.stream}
-          onSubmit={this.OnEditSubmit}
+          // initialValues={this.props.stream}
+          initialValues={{title, description}}
+          onSubmit={this.submitEdit}
         />
       </div>
     );
@@ -24,9 +26,9 @@ class StreamEdit extends Component {
     this.props.getSingleStreamAction(this.props.match.params.id);
   };
 
-  OnEditSubmit = formData => {
+  submitEdit = formData => {
     console.log("Editing the form with the following new values: ", formData);
-    this.props.editStreamAction(formData.id, formData);
+    this.props.editStreamAction(this.props.match.params.id, formData);
   };
 }
 
