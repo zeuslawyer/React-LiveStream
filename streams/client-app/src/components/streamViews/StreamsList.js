@@ -37,7 +37,7 @@ export class StreamsList extends Component {
           {this.renderAdminButtons(stream)}
           <i className="large middle aligned camera icon" />
           <div className="content">
-            {stream.title}
+            <b>{stream.title}</b>
             <div className="description"> {stream.description} </div>
           </div>
           {/* {this.renderAdminButtons(stream)} */}
