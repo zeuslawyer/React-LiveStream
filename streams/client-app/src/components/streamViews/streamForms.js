@@ -17,7 +17,7 @@ class StreamForm extends Component {
           {formProps.label}
           {/* pass the formProps.input object as an object of props to input.
   uses the same k/v pairing */}
-          <input {...formProps.input} />
+          <input {...formProps.input} value={formProps.displayValue}/>
         </label>
         {this.renderInputErrorMessage(formProps.meta)}
       </div>
@@ -44,7 +44,8 @@ class StreamForm extends Component {
   };
 
   render() {
-    // console.log(this.props); // all the many things that redux forms adds to streamForm component
+    console.log(this.props.streamData); // all the many things that redux forms adds to streamForm component
+  
     return (
       <form
         className="ui form error"
@@ -58,11 +59,13 @@ class StreamForm extends Component {
           //this fn is passed a form props object, which contains all the props from here + input values
           component={this.renderInputField}
           label="TITLE"
+          displayValue = {this.props.streamData.title}
         />
         <Field
           name="description"
           component={this.renderInputField}
           label="DESCRIPTION"
+          displayValue = {this.props.streamData.description}
         />
         <button className="ui button green" type="submit">
           SUBMIT
