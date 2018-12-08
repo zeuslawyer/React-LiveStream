@@ -1,22 +1,32 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getSingleStreamAction } from "../../actions/index";
-import StreamForms from './StreamForms'
+import { getSingleStreamAction, editStreamAction, getAllStreamsAction } from "../../actions/index";
+import StreamForms from "./StreamForms";
 
 class StreamEdit extends Component {
   render() {
-    // console.log(this.props.match);
-    if (!this.props.stream) return <div> / No Stream found /</div>;
-    // return <div>Title: {this.props.stream.title}</div>;
-    return(
+    // console.log(this.props);
+
+    if (!this.props.stream) return <div> / ...fetching... /</div>;
+
+    return (
       <div>
-        <StreamForms streamData={this.props.stream}/>
+        <h3>Edit this Stream</h3>
+        <StreamForms
+          initialValues={this.props.stream}
+          onSubmit={this.OnEditSubmit}
+        />
       </div>
-    )
+    );
   }
 
   componentDidMount = () => {
     this.props.getSingleStreamAction(this.props.match.params.id);
+  };
+
+  OnEditSubmit = formData => {
+    console.log("Editing the form with the following new values: ", formData);
+    this.props.editStreamAction(formData.id, formData);
   };
 }
 
@@ -27,5 +37,5 @@ const mapStatetoProps = (state, currentProps) => {
 
 export default connect(
   mapStatetoProps,
-  { getSingleStreamAction }
+  { getSingleStreamAction, editStreamAction }
 )(StreamEdit);

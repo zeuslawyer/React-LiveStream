@@ -59,7 +59,7 @@ export const getAllStreamsAction = () => {
 export const getSingleStreamAction = id => {
   return async dispatch => {
     const response = await axios.get(`/streams/${id}`);
-    console.log(response);
+    // console.log(response);
     dispatch({
       type: actionKeys.FETCH_A_STREAM,
       payload: response.data
