@@ -22,7 +22,10 @@ export class StreamsList extends Component {
           >
             EDIT
           </Link>
-          <Link className="ui red tiny button" to="streams/delete">
+          <Link
+            className="ui red tiny button"
+            to={`/streams/delete/${stream.id}`}
+          >
             DELETE
           </Link>
         </div>

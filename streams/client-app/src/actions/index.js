@@ -48,7 +48,7 @@ export const streamCreateAction = formData => {
 export const getAllStreamsAction = () => {
   return async dispatch => {
     const response = await axios.get("/streams");
-    // console.log(response.data);
+    // console.log('Fetching all streams:  ', response.data);
     dispatch({
       type: actionKeys.FETCH_STREAMS,
       payload: response.data
@@ -59,7 +59,7 @@ export const getAllStreamsAction = () => {
 export const getSingleStreamAction = id => {
   return async dispatch => {
     const response = await axios.get(`/streams/${id}`);
-    // console.log(response);
+    console.log("Getting a single stream...", response.data);
     dispatch({
       type: actionKeys.FETCH_A_STREAM,
       payload: response.data
@@ -82,7 +82,7 @@ export const editStreamAction = (id, formData) => {
 export const deleteStreamAction = id => {
   return async dispatch => {
     const response = await axios.delete(`/streams/${id}`);
-    console.log(response); //response declaration not needed
+    console.log(response.data); //response declaration not needed
     dispatch({
       type: actionKeys.FETCH_A_STREAM,
       payload: id //note payload is id of deleted stream

@@ -1,28 +1,45 @@
 import React, { Component } from "react";
 import Modal from "../Modal";
-import browserHistory from '../../history';
-
+import browserHistory from "../../history";
+import { connect } from "react-redux";
+import { getSingleStreamAction } from "../../actions/index";
 
 class StreamDelete extends Component {
-  actionsButtons = (
-    <div>
-      <div className="ui button primary">Delete</div>
-      <div className="ui button">Cancel</div>
-    </div>
-  );
+  renderActionButtons = () => {
+    //return JSX that renders action buttons...
+    return (
+      <div>
+        <div className="ui button primary">Delete</div>
+        <div className="ui button">Cancel</div>
+      </div>
+    );
+  };
 
   onDismiss = () => {
-    browserHistory.push("/")
-  }
-    
-  
+    browserHistory.push("/");
+  };
+
+  componentDidMount = () => {
+    // console.log(this.props.match.params);
+    //get the stream's ID from the URL....
+    this.props.getSingleStreamAction(this.props.match.params.id);
+  };
+
+  renderContentProp = () => {
+    if (!this.props.stream) {
+      return "Are you sure you want to delete?";
+    }
+
+    return `Are you sure you want to delete ${this.props.stream.title} `;
+  };
+
   render() {
     return (
       <div>
         <Modal
-          content="Are you sure you want to delete?"
-          header="Delete this stream"
-          actions={this.actionsButtons}
+          content={this.renderContentProp()}
+          header="Delete this Stream?"
+          actions={this.renderActionButtons()}
           onDismiss={this.onDismiss}
         />
       </div>
@@ -30,4 +47,11 @@ class StreamDelete extends Component {
   }
 }
 
-export default StreamDelete;
+const mapStatetoProps = (state, currentProps) => {
+  return { stream: state.streams[currentProps.match.params.id] };
+};
+
+export default connect(
+  mapStatetoProps,
+  { getSingleStreamAction }
+)(StreamDelete);

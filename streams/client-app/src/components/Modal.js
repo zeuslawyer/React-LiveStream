@@ -10,7 +10,8 @@ function Modal(props) {
     >
       <div
         className="ui standard modal visible active"
-        onClick={event => event.stopPropagation()}
+        // disable click handling inside inner modal
+        onClick={event => event.stopPropagation()}  
       >
         <div className="header">{props.header}</div>
         <div className="content">{props.content}</div>
