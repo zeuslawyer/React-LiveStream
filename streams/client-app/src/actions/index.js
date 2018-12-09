@@ -82,10 +82,11 @@ export const editStreamAction = (id, formData) => {
 export const deleteStreamAction = id => {
   return async dispatch => {
     const response = await axios.delete(`/streams/${id}`);
-    console.log('deleting a single stream... ', response.data); //response data not needed as deletion
+    console.log("deleted a stream... ", response); //response data not needed as deletion
     dispatch({
-      type: actionKeys.FETCH_A_STREAM,
+      type: actionKeys.DELETE_STREAM,
       payload: id //note payload is id of deleted stream
     });
+    browserHistory.push("/");
   };
 };

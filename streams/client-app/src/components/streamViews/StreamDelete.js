@@ -2,16 +2,23 @@ import React, { Component } from "react";
 import Modal from "../Modal";
 import browserHistory from "../../history";
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom'
-import { getSingleStreamAction } from "../../actions/index";
+import { Link } from "react-router-dom";
+import { getSingleStreamAction, deleteStreamAction } from "../../actions/index";
 
 class StreamDelete extends Component {
   renderActionButtons = () => {
     //return JSX that renders action buttons...
+
+    const { id } = this.props.match.params;
     return (
       <React.Fragment>
-        <div className="ui button primary ">Delete</div>
-        <div className="ui button" onClick={()=>this.props.history.goBack()}>
+        <button
+          className="ui button negative"
+          onClick={() => this.props.deleteStreamAction(id)}
+        >
+          Delete
+        </button>
+        <div className="ui button" onClick={() => this.props.history.goBack()}>
           Cancel
         </div>
       </React.Fragment>
@@ -54,5 +61,5 @@ const mapStatetoProps = (state, currentProps) => {
 
 export default connect(
   mapStatetoProps,
-  { getSingleStreamAction }
+  { getSingleStreamAction, deleteStreamAction }
 )(StreamDelete);

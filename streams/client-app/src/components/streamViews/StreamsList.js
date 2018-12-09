@@ -53,7 +53,7 @@ export class StreamsList extends Component {
     if (this.props.currentUserId && this.props.isSignedIn)
       return (
         <div style={{ textAlign: "right" }}>
-          <Link to="/streams/new" className="ui purple button">
+          <Link to="/streams/new" className="ui primary button">
             {" "}
             Create Stream
           </Link>
