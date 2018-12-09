@@ -1,16 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
-const JSX_MODAL = (
-  <div className="ui dimmer modals visible active">
-    <div className="ui standard modal visible active">
-      ARE YOU SURE YOU WANT TO DELETE?
-    </div>
-  </div>
-);
+import browserHistory from "../history";
 
 function Modal(props) {
-  return ReactDOM.createPortal(JSX_MODAL, document.querySelector("#modal"));
+  //create portal takes to arguments : some JSX, and the DOM element to attach it to
+  return ReactDOM.createPortal(
+    <div
+      className="ui dimmer modals visible active"
+      onClick={() => browserHistory.push("/")}
+    >
+      <div
+        className="ui standard modal visible active"
+        onClick={event => event.stopPropagation()}
+      >
+        <div className="header">{props.header}</div>
+        <div className="content">{props.content}</div>
+        <div className="actions">{props.actions}</div>
+      </div>
+    </div>,
+    document.querySelector("#modal")
+  );
 }
 
 export default Modal;

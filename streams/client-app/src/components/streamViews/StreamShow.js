@@ -1,12 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {  } from "../../actions/index";
+import {} from "../../actions/index";
 
 class StreamShow extends Component {
-  
   render() {
-    
-
     return (
       <div>
         <p>Showing Stream here..</p>
@@ -15,13 +12,13 @@ class StreamShow extends Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    
-  };
-};
+// const mapStateToProps = (state, ownProps) => {
+//   return {
+
+//   };
+// };
 
 export default connect(
   null,
-  {  }
+  {}
 )(StreamShow);
