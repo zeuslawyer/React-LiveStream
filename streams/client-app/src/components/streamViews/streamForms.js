@@ -7,7 +7,7 @@ class StreamForm extends Component {
   renderInputField = formProps => {
     // the props passed to each rendered input element by <Field />
     //this function gets called EVERY TIME SOMETHING GETS INPUT INTO A FIELD!!!
-    console.log(formProps);
+    //console.log(formProps);
 
     // apply error class name to input field div if meta.error
     const error = formProps.meta.error && formProps.meta.touched ? "error" : "";
