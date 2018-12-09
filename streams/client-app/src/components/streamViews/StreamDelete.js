@@ -10,7 +10,9 @@ class StreamDelete extends Component {
     return (
       <div>
         <div className="ui button primary">Delete</div>
-        <div className="ui button">Cancel</div>
+        <div className="ui button" onClick={() => this.props.history.goBack()}>
+          Cancel
+        </div>
       </div>
     );
   };
