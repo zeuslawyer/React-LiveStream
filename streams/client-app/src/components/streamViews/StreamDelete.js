@@ -2,18 +2,19 @@ import React, { Component } from "react";
 import Modal from "../Modal";
 import browserHistory from "../../history";
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom'
 import { getSingleStreamAction } from "../../actions/index";
 
 class StreamDelete extends Component {
   renderActionButtons = () => {
     //return JSX that renders action buttons...
     return (
-      <div>
-        <div className="ui button primary">Delete</div>
-        <div className="ui button" onClick={() => this.props.history.goBack()}>
+      <React.Fragment>
+        <div className="ui button primary ">Delete</div>
+        <div className="ui button" onClick={()=>this.props.history.goBack()}>
           Cancel
         </div>
-      </div>
+      </React.Fragment>
     );
   };
 
@@ -37,14 +38,12 @@ class StreamDelete extends Component {
 
   render() {
     return (
-      <div>
-        <Modal
-          content={this.renderContentProp()}
-          header="Delete this Stream?"
-          actions={this.renderActionButtons()}
-          onDismiss={this.onDismiss}
-        />
-      </div>
+      <Modal
+        content={this.renderContentProp()}
+        header="Delete this Stream?"
+        actions={this.renderActionButtons()}
+        onDismiss={this.onDismiss}
+      />
     );
   }
 }
