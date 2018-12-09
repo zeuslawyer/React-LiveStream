@@ -1,13 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import browserHistory from "../history";
 
 function Modal(props) {
   //create portal takes to arguments : some JSX, and the DOM element to attach it to
   return ReactDOM.createPortal(
     <div
       className="ui dimmer modals visible active"
-      onClick={() => browserHistory.push("/")}
+      onClick={() => props.onDismiss()}
     >
       <div
         className="ui standard modal visible active"
@@ -18,7 +17,7 @@ function Modal(props) {
         <div className="actions">{props.actions}</div>
       </div>
     </div>,
-    document.querySelector("#modal")
+    document.querySelector("#modal") //target DOM element
   );
 }
 

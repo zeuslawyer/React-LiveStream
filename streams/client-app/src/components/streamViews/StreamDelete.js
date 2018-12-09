@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Modal from "../Modal";
+import browserHistory from '../../history';
+
 
 class StreamDelete extends Component {
   actionsButtons = (
@@ -9,6 +11,11 @@ class StreamDelete extends Component {
     </div>
   );
 
+  onDismiss = () => {
+    browserHistory.push("/")
+  }
+    
+  
   render() {
     return (
       <div>
@@ -16,6 +23,7 @@ class StreamDelete extends Component {
           content="Are you sure you want to delete?"
           header="Delete this stream"
           actions={this.actionsButtons}
+          onDismiss={this.onDismiss}
         />
       </div>
     );
