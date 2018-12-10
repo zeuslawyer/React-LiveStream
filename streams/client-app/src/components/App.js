@@ -9,6 +9,7 @@ import StreamDelete from "./streamViews/StreamDelete";
 import StreamEdit from "./streamViews/StreamEdit";
 import StreamShow from "./streamViews/StreamShow";
 
+
 import Header from "./Header";
 
 class App extends Component {
@@ -24,8 +25,8 @@ class App extends Component {
 
             <Route path="/streams/new" exact component={StreamCreate} />
             <Route path="/streams/edit/:id" exact component={StreamEdit} />
-            <Route path="/streams/delete/:id"  component={StreamDelete} />
-            <Route path="/streams/show" exact component={StreamShow} />
+            <Route path="/streams/delete/:id" component={StreamDelete} />
+            <Route path="/streams/show/:id" exact component={StreamShow} />
           </div>
         </Router>
       </div>

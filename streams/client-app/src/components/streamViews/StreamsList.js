@@ -17,16 +17,16 @@ export class StreamsList extends Component {
           }}
         >
           <Link
-            className="ui yellow tiny button"
+            // className="ui yellow tiny button"
             to={`/streams/edit/${stream.id}`}
           >
-            EDIT
+            <i class="edit outline icon large"></i>
           </Link>
           <Link
-            className="ui red tiny button"
+            // className="ui red  button"
             to={`/streams/delete/${stream.id}`}
           >
-            DELETE
+            <i class="trash alternate outline large red icon"></i>
           </Link>
         </div>
       );
@@ -40,7 +40,9 @@ export class StreamsList extends Component {
           {this.renderAdminButtons(stream)}
           <i className="large middle aligned camera icon" />
           <div className="content">
-            <b>{stream.title}</b>
+            <Link to={`/streams/show/${stream.id}`} className="header">
+              <b>{stream.title}</b>
+            </Link>
             <div className="description"> {stream.description} </div>
           </div>
           {/* {this.renderAdminButtons(stream)} */}
