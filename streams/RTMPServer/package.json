@@ -1,0 +1,15 @@
+{
+  "name": "rtmpserver",
+  "version": "1.0.0",
+  "description": "RealTimeMessagingProtocol streaming",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Zubin | zeuscoder",
+  "license": "ISC",
+  "dependencies": {
+    "node-media-server": "^1.4.7"
+  }
+}
