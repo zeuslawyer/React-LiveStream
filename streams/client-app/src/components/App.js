@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Router, Route } from "react-router-dom";
+import { Router, Route, Switch } from "react-router-dom";
 import "redux";
 import browserHistory from "../history";
 
@@ -8,7 +8,6 @@ import StreamCreate from "./streamViews/StreamCreate";
 import StreamDelete from "./streamViews/StreamDelete";
 import StreamEdit from "./streamViews/StreamEdit";
 import StreamShow from "./streamViews/StreamShow";
-
 
 import Header from "./Header";
 
@@ -20,13 +19,20 @@ class App extends Component {
           <div>
             <Header />
 
-            <Route path="/" exact component={StreamsList} />
-            <Route path="/streams" exact component={StreamsList} />
+            <Switch>
+              <Route path="/" exact component={StreamsList} />
+              <Route path="/streams" exact component={StreamsList} />
 
-            <Route path="/streams/new" exact component={StreamCreate} />
-            <Route path="/streams/edit/:id" exact component={StreamEdit} />
-            <Route path="/streams/delete/:id" component={StreamDelete} />
-            <Route path="/streams/show/:id" exact component={StreamShow} />
+              <Route path="/streams/new" exact component={StreamCreate} />
+              <Route path="/streams/edit/:id" exact component={StreamEdit} />
+              <Route
+                path="/streams/delete/:id"
+                exact
+                component={StreamDelete}
+              />
+              <Route path="/streams/:id" exact component={StreamShow} />
+            </Switch>
+            
           </div>
         </Router>
       </div>
