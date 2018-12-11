@@ -1,15 +1,31 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {} from "../../actions/index";
 import {
   getAllStreamsAction,
   getSingleStreamAction
 } from "../../actions/index";
+import flv from "flv.js";
 
 class StreamShow extends Component {
+  constructor(props) {
+    super(props);
+    this.videoRef = React.createRef();
+  }
   componentDidMount = () => {
-    this.props.getSingleStreamAction(this.props.match.params.id);
+    const { streamId } = this.props.match.params;
     // this.props.getAllStreamsAction();    //->> this works too but sets redux store to have all streams
+    this.props.getSingleStreamAction(streamId);
+
+    //setup flv live streamer
+    // console.log(this.videoRef);
+    this.player = flv.createPlayer({
+      type: "flv",
+      url: `http://localhost:8000/live/${streamId}` //ref to Node-Media-Server docs
+    });
+
+    this.player.attachMediaElement(this.videoRef.current);
+    this.player.load();
+    // .play();
   };
 
   render() {
@@ -19,6 +35,7 @@ class StreamShow extends Component {
 
     return (
       <div>
+        <video ref={this.videoRef} style={{ width: "100%" }} controls />
         <h1>{title}</h1>
         <h5>{description}</h5>
       </div>
