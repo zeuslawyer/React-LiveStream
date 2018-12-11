@@ -12,21 +12,33 @@ class StreamShow extends Component {
     this.videoRef = React.createRef();
   }
   componentDidMount = () => {
-    const { streamId } = this.props.match.params;
+    const { id } = this.props.match.params;
     // this.props.getAllStreamsAction();    //->> this works too but sets redux store to have all streams
-    this.props.getSingleStreamAction(streamId);
+    this.props.getSingleStreamAction(id);
+    this.renderPlayer(id);
+  };
 
-    //setup flv live streamer
+  componentDidUpdate=()=>{
+    this.renderPlayer(this.props.match.params.id)
+  }
+
+  componentWillUnmount=()=>{
+    this.player.destroy()
+  }
+
+  renderPlayer =(id) => {
+    //setup flv live streamer - if not already setup || if stream data not undefined
+    if (this.player || !this.props.stream) return;
     // console.log(this.videoRef);
     this.player = flv.createPlayer({
       type: "flv",
-      url: `http://localhost:8000/live/${streamId}` //ref to Node-Media-Server docs
+      url: `http://localhost:8000/live/${id}` //ref to Node-Media-Server docs
     });
 
     this.player.attachMediaElement(this.videoRef.current);
     this.player.load();
     // .play();
-  };
+  }
 
   render() {
     if (!this.props.stream) return null;
