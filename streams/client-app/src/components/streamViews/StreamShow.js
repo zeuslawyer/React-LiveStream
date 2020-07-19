@@ -18,15 +18,15 @@ class StreamShow extends Component {
     this.renderPlayer(id);
   };
 
-  componentDidUpdate=()=>{
-    this.renderPlayer(this.props.match.params.id)
-  }
+  componentDidUpdate = () => {
+    this.renderPlayer(this.props.match.params.id);
+  };
 
-  componentWillUnmount=()=>{
-    this.player.destroy()
-  }
+  componentWillUnmount = () => {
+    this.player.destroy();
+  };
 
-  renderPlayer =(id) => {
+  renderPlayer = id => {
     //setup flv live streamer - if not already setup || if stream data not undefined
     if (this.player || !this.props.stream) return;
     // console.log(this.videoRef);
@@ -38,7 +38,7 @@ class StreamShow extends Component {
     this.player.attachMediaElement(this.videoRef.current);
     this.player.load();
     // .play();
-  }
+  };
 
   render() {
     if (!this.props.stream) return null;

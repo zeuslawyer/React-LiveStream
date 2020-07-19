@@ -9,6 +9,7 @@ import reducers from "./reducers/index";
 
 //wire up redux dev tools for chrome
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
 //wire up redux and redux-thunk middleware
 const store = createStore(
   reducers,
